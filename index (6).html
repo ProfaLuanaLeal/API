@@ -17,27 +17,7 @@
     </div>
 
     <script>
-        async function buscarLivros() {
-            const title = document.getElementById('bookInput').value;
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.innerHTML = '<p>Buscando...</p>';
-
-            try {
-                // Chamada para a SUA API que criamos no Node
-                const response = await fetch(`/catalog/search?title=${title}`);
-                const data = await response.json();
-
-                resultsDiv.innerHTML = data.map(book => `
-                    <div class="book-card">
-                        <h3>${book.titulo}</h3>
-                        <p><strong>Autor:</strong> ${book.autor}</p>
-                        <p><strong>Ano:</strong> ${book.ano || 'N/A'}</p>
-                    </div>
-                `).join('');
-            } catch (error) {
-                resultsDiv.innerHTML = '<p>Erro ao buscar livros.</p>';
-            }
-        }
+        
     </script>
 </body>
 </html>
