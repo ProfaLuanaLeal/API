@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Busca de Livros - Open Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Catálogo de Livros</h1>
+        <div class="search-box">
+            <input type="text" id="bookInput" placeholder="Digite o título do livro...">
+            <button onclick="buscarLivros()">Buscar</button>
+        </div>
+        <div id="results" class="results-grid">
+            </div>
+    </div>
+
+    <script>
+        async function buscarLivros() {
+            const title = document.getElementById('bookInput').value;
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<p>Buscando...</p>';
+
+            try {
+                // Chamada para a SUA API que criamos no Node
+                const response = await fetch(`/catalog/search?title=${title}`);
+                const data = await response.json();
+
+                resultsDiv.innerHTML = data.map(book => `
+                    <div class="book-card">
+                        <h3>${book.titulo}</h3>
+                        <p><strong>Autor:</strong> ${book.autor}</p>
+                        <p><strong>Ano:</strong> ${book.ano || 'N/A'}</p>
+                    </div>
+                `).join('');
+            } catch (error) {
+                resultsDiv.innerHTML = '<p>Erro ao buscar livros.</p>';
+            }
+        }
+    </script>
+</body>
+</html>
