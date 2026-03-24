@@ -1,4 +1,4 @@
-# API
+# API - Back end Profa Luana Leal
 Para o seu **README.md** no GitHub, é importante usar uma linguagem que conecte a teoria da aula (Arquitetura e Microsserviços) com a prática que eles acabaram de ver no Codespaces. 
 
 Aqui está um modelo estruturado e "escaneável" para você copiar e colar:
